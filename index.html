@@ -1,15 +1,41 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <title>Debugging con AI</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Colorist | Generador de Paletas</title>
+    <!-- Vinculamos la hoja de estilos externa -->
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h1>Práctica de Debugging</h1>
-  <button id="miBoton">Click aquí</button>
-  <p id="resultado"></p>
-  
-  <script src="app.js"></script>
+    <header>
+        <h1>Colorist</h1>
+        <p>Una herramienta intuitiva y de estética minimalista para potenciar el flujo creativo visual.</p>
+    </header>
+
+    <main>
+        <!-- SECCIÓN DE CONTROLES -->
+        <section class="controls">
+            <label for="palette-size">Tamaño de la paleta:</label>
+            <select id="palette-size">
+                <option value="6">6 colores</option>
+                <option value="8">8 colores</option>
+                <option value="9">9 colores</option>
+            </select>
+            
+            <button id="generate-btn">Generar paleta</button>
+        </section>
+
+        <!-- SECCIÓN DE LA PALETA -->
+        <section id="palette-container" aria-live="polite">
+            <!-- Aquí nuestro JavaScript inyectará dinámicamente cada color -->
+        </section>
+    </main>
+
+    <!-- CONTENEDOR DE MICROFEEDBACK -->
+    <div id="toast" class="hidden" role="alert" aria-hidden="true"></div>
+
+    <!-- Vinculamos el script justo antes de cerrar el body -->
+    <script src="app.js"></script>
 </body>
 </html>
