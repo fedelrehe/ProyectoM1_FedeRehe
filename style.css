@@ -1,0 +1,149 @@
+/* =========================================
+   VARIABLES GLOBALES (Custom Properties)
+   ========================================= */
+:root {
+    /* Paleta base UI (Modo Claro / Minimalista) */
+    --bg-color: #f9f9f9;
+    --text-color: #2c2c2c;
+    --accent-color: #4a4a4a;
+    --border-radius: 8px;
+    --font-main: 'Inter', sans-serif;
+}
+
+/* =========================================
+   RESETEO BÁSICO
+   ========================================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-main);
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    padding: 2rem;
+}
+
+/* =========================================
+   TIPOGRAFÍA Y HEADER
+   ========================================= */
+header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+header h1 {
+    font-size: 2.5rem;
+    font-weight: 300;
+    letter-spacing: -1px;
+    margin-bottom: 0.5rem;
+}
+
+header p {
+    color: #666;
+    font-size: 1rem;
+}
+
+/* =========================================
+   SECCIÓN DE CONTROLES
+   ========================================= */
+.controls {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    margin-bottom: 3rem;
+    background: #fff;
+    padding: 1rem 2rem;
+    border-radius: var(--border-radius);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+select, button {
+    font-family: inherit;
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    outline: none;
+}
+
+button {
+    background-color: var(--text-color);
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+button:hover {
+    background-color: var(--accent-color);
+}
+
+/* =========================================
+   CONTENEDOR DE LA PALETA (TU RETO)
+   ========================================= */
+#palette-container {
+    /* RETO PARA TI:
+       1. Configura este contenedor para usar CSS Grid.
+       2. Haz que las columnas se adapten dinámicamente usando 'repeat(auto-fit, minmax(150px, 1fr))'.
+       3. Añade un 'gap' (espaciado) entre los colores.
+       4. Define un ancho máximo (ej. 1000px) y centra el contenedor.
+    */
+    width: 100%;
+}
+
+/* Estilos básicos para las tarjetas de color que crearemos con JS */
+.color-card {
+    display: flex;
+    flex-direction: column;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    transition: transform 0.2s ease;
+}
+
+.color-card:hover {
+    transform: translateY(-5px);
+}
+
+.color-display {
+    height: 150px; /* Altura de la muestra de color */
+    width: 100%;
+}
+
+.color-info {
+    padding: 1rem;
+    background: #fff;
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.1rem;
+    cursor: pointer;
+}
+
+/* =========================================
+   MICROFEEDBACK (TOAST)
+   ========================================= */
+#toast {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #333;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    opacity: 1;
+    transition: opacity 0.3s ease;
+}
+
+#toast.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
