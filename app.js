@@ -15,6 +15,27 @@ function getRandomHexColor() {
     return hex;
 }
 
+// Función para copiar al portapapeles y mostrar el Toast
+function copyToClipboard(hexCode) {
+    // 1. Usamos la API moderna del navegador para copiar el texto
+    navigator.clipboard.writeText(hexCode)
+        .then(() => {
+            // 2. Si se copió con éxito, configuramos el mensaje del Toast
+            toast.textContent = `¡Color ${hexCode} copiado!`;
+            
+            // 3. Le quitamos la clase 'hidden' para que aparezca en pantalla
+            toast.classList.remove('hidden');
+            
+            // 4. Configuramos un temporizador para ocultarlo después de 2.5 segundos
+            setTimeout(() => {
+                toast.classList.add('hidden');
+            }, 2500);
+        })
+        .catch(err => {
+            console.error('No se pudo copiar el texto: ', err);
+        });
+}
+
 generateBtn.addEventListener('click', () => {
     // 1. Averiguamos cuántos colores quiere el usuario
     const size = parseInt(paletteSizeSelect.value);
@@ -38,7 +59,10 @@ generateBtn.addEventListener('click', () => {
             <div class="color-display" style="background-color: ${randomColor};"></div>
             <div class="color-info">${randomColor}</div>
         `;
-        
+        // Le agregamos un evento de clic a toda la tarjeta
+        colorCard.addEventListener('click', () => {
+            copyToClipboard(randomColor);
+        });
         // D. Agregamos la tarjeta recién creada al contenedor principal
         paletteContainer.appendChild(colorCard);
     }
