@@ -1,12 +1,18 @@
+/* =========================================
+   VARIABLES GLOBALES (Custom Properties)
+   ========================================= */
 :root {
-   
+    /* Paleta base UI (Modo Claro / Minimalista) */
     --bg-color: #f9f9f9;
     --text-color: #2c2c2c;
     --accent-color: #4a4a4a;
     --border-radius: 8px;
-    --font-main: 'Inter', sans-serif;
+    --font-main: 'Inter', sans-serif; /* Tipografía actualizada */
 }
 
+/* =========================================
+   RESETEO BÁSICO
+   ========================================= */
 * {
     margin: 0;
     padding: 0;
@@ -24,9 +30,44 @@ body {
     padding: 2rem;
 }
 
+/* =========================================
+   ANIMACIONES Y BANNER VIBRANTE (NUEVO)
+   ========================================= */
+.gradient-banner {
+    width: 100%;
+    height: 12px;
+    position: absolute; /* Lo ancla al tope de la ventana */
+    top: 0;
+    left: 0;
+    background: linear-gradient(270deg, #ff4b4b, #f9c74f, #90be6d, #4d908e, #577590, #9b5de5);
+    background-size: 1200% 1200%;
+    animation: fluidGradient 12s ease infinite;
+}
+
+@keyframes fluidGradient {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+@keyframes fadeInDown {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes popIn {
+    from { opacity: 0; transform: scale(0.9); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+/* =========================================
+   TIPOGRAFÍA Y HEADER
+   ========================================= */
 header {
     text-align: center;
     margin-bottom: 2rem;
+    margin-top: 2rem; /* Espacio extra para que no choque con el banner */
+    animation: fadeInDown 0.8s ease-out; /* Animación de entrada */
 }
 
 header h1 {
@@ -41,6 +82,9 @@ header p {
     font-size: 1rem;
 }
 
+/* =========================================
+   SECCIÓN DE CONTROLES
+   ========================================= */
 .controls {
     display: flex;
     gap: 1rem;
@@ -73,22 +117,21 @@ button:hover {
     background-color: var(--accent-color);
 }
 
+/* =========================================
+   CONTENEDOR DE LA PALETA (CSS GRID)
+   ========================================= */
 #palette-container {
-    
     width: 100%;
-    
     display: grid;
-    
-      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    
-        gap: 1.5rem;
-    
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1.5rem;
     max-width: 1000px;
     margin: 0 auto;
-    width: 100%;
 }
 
-/* Estilos básicos para las tarjetas de color que crearemos con JS */
+/* =========================================
+   TARJETAS DE COLOR
+   ========================================= */
 .color-card {
     display: flex;
     flex-direction: column;
@@ -96,6 +139,7 @@ button:hover {
     overflow: hidden;
     box-shadow: 0 4px 6px rgba(0,0,0,0.05);
     transition: transform 0.2s ease;
+    animation: popIn 0.4s ease-out forwards; /* Animación al generarse */
 }
 
 .color-card:hover {
@@ -103,7 +147,7 @@ button:hover {
 }
 
 .color-display {
-    height: 150px; /* Altura de la muestra de color */
+    height: 150px;
     width: 100%;
 }
 
@@ -131,6 +175,7 @@ button:hover {
     font-size: 0.9rem;
     opacity: 1;
     transition: opacity 0.3s ease;
+    z-index: 10;
 }
 
 #toast.hidden {
