@@ -61,48 +61,66 @@ body {
 }
 
 /* =========================================
-   TIPOGRAFÍA Y HEADER
+      TIPOGRAFÍA Y HEADER
    ========================================= */
 header {
     text-align: center;
     margin-bottom: 2rem;
-    margin-top: 2rem; /* Espacio extra para que no choque con el banner */
-    animation: fadeInDown 0.8s ease-out; /* Animación de entrada */
+    margin-top: 2rem;
+    animation: fadeInDown 0.8s ease-out;
+}
+
+.brand-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 0.5rem;
 }
 
 header h1 {
     font-size: 2.5rem;
-    font-weight: 300;
+    font-weight: 600; /* Un poco más de peso para contrastar con la limpieza general */
     letter-spacing: -1px;
-    margin-bottom: 0.5rem;
+    color: var(--text-color);
 }
 
 header p {
     color: #666;
     font-size: 1rem;
+    max-width: 500px;
+    margin: 0 auto;
+    line-height: 1.5;
 }
 
 /* =========================================
-   SECCIÓN DE CONTROLES
+   SECCIÓN DE CONTROLES (GLASSMORPHISM)
    ========================================= */
 .controls {
     display: flex;
     gap: 1rem;
     align-items: center;
     margin-bottom: 3rem;
-    background: #fff;
-    padding: 1rem 2rem;
-    border-radius: var(--border-radius);
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    padding: 1.2rem 2.5rem;
+    border-radius: 50px; /* Bordes mucho más redondeados, estilo píldora */
+    
+    /* Efecto Vidrio Esmerilado */
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
 }
 
 select, button {
     font-family: inherit;
     font-size: 1rem;
-    padding: 0.5rem 1rem;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+    padding: 0.6rem 1.2rem;
+    border: 1px solid #e0e0e0;
+    border-radius: 20px;
     outline: none;
+    background: #fff;
+    transition: all 0.2s ease;
 }
 
 button {
@@ -110,13 +128,14 @@ button {
     color: #fff;
     border: none;
     cursor: pointer;
-    transition: background-color 0.2s ease;
+    font-weight: 500;
 }
 
 button:hover {
     background-color: var(--accent-color);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
 }
-
 /* =========================================
    CONTENEDOR DE LA PALETA (CSS GRID)
    ========================================= */
