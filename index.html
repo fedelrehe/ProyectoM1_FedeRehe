@@ -9,47 +9,59 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
 
-<header>
-        <div class="gradient-banner"></div>
-        
+<body>
+<body>
+    <!-- BARRA DE NAVEGACIÓN SUPERIOR -->
+    <nav class="navbar">
         <div class="brand-container">
             <!-- Isotipo SVG Geométrico -->
-            <svg width="42" height="42" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <svg width="32" height="32" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <circle cx="16" cy="20" r="12" fill="#ff4b4b" style="mix-blend-mode: multiply;" opacity="0.85"/>
                 <circle cx="26" cy="14" r="12" fill="#f9c74f" style="mix-blend-mode: multiply;" opacity="0.85"/>
                 <circle cx="26" cy="26" r="12" fill="#9b5de5" style="mix-blend-mode: multiply;" opacity="0.85"/>
             </svg>
-            <h1>Colorist</h1>
+            <h2>Colorist</h2>
         </div>
+        <div class="nav-links">
+            <a href="#">Herramientas</a>
+            <a href="#">Explorar</a>
+        </div>
+    </nav>
+
+    <!-- SECCIÓN PRINCIPAL HERO (DOS COLUMNAS) -->
+    <main class="hero-section">
         
-        <p>Una herramienta intuitiva y de estética minimalista para potenciar el flujo creativo visual.</p>
-    </header>
-
-    <main>
-        <!-- SECCIÓN DE CONTROLES -->
-        <section class="controls">
-            <label for="palette-size">Tamaño de la paleta:</label>
-            <select id="palette-size">
-                <option value="6">6 colores</option>
-                <option value="8">8 colores</option>
-                <option value="9">9 colores</option>
-            </select>
+        <!-- COLUMNA IZQUIERDA: Texto y Controles -->
+        <div class="hero-content">
+            <span class="subtitle">Generador para Colorfly Studio</span>
+            <h1>Crea paletas de colores en segundos</h1>
+            <p>Genera la paleta perfecta para tu diseño o inspírate con cientos de combinaciones. Herramienta de uso interno, rápida y sin distracciones.</p>
             
-            <button id="generate-btn">Generar paleta</button>
-        </section>
+            <section class="controls">
+                <select id="palette-size" aria-label="Cantidad de colores">
+                    <option value="6">6 colores</option>
+                    <option value="8">8 colores</option>
+                    <option value="9">9 colores</option>
+                </select>
+                <button id="generate-btn" class="primary-btn">Generar paleta</button>
+            </section>
+            
+            <p class="hint">Prueba haciendo clic en el candado para fijar un color.</p>
+        </div>
 
-        <!-- SECCIÓN DE LA PALETA -->
-        <section id="palette-container" aria-live="polite">
-            <!-- Aquí nuestro JavaScript inyectará dinámicamente cada color -->
-        </section>
+        <!-- COLUMNA DERECHA: Los Colores -->
+        <div class="hero-visual">
+            <section id="palette-container" aria-live="polite">
+                <!-- JavaScript inyectará las barras verticales de colores aquí -->
+            </section>
+        </div>
+
     </main>
 
     <!-- CONTENEDOR DE MICROFEEDBACK -->
     <div id="toast" class="hidden" role="alert" aria-hidden="true"></div>
 
-    <!-- Vinculamos el script justo antes de cerrar el body -->
     <script src="app.js"></script>
 </body>
 </html>

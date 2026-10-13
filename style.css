@@ -1,230 +1,208 @@
 /* =========================================
-   VARIABLES GLOBALES (Custom Properties)
+   VARIABLES Y RESET
    ========================================= */
 :root {
-    
-    --bg-color: #f9f9f9;
-    --text-color: #2c2c2c;
-    --accent-color: #4a4a4a;
-    --border-radius: 8px;
-    --font-main: 'Inter', sans-serif; 
+    --bg-color: #fbfbfb;
+    --text-color: #111111;
+    --accent-color: #3b60ff; /* Un azul vibrante estilo la referencia */
+    --border-radius: 12px;
+    --font-main: 'Inter', sans-serif;
 }
 
-/* =========================================
-   RESETEO BÁSICO
-   ========================================= */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+* { margin: 0; padding: 0; box-sizing: border-box; }
 
 body {
     font-family: var(--font-main);
     background-color: var(--bg-color);
     color: var(--text-color);
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
+}
+
+/* =========================================
+   NAVBAR
+   ========================================= */
+.navbar {
+    display: flex;
+    justify-content: space-between;
     align-items: center;
-    min-height: 100vh;
-    padding: 2rem;
-}
-
-/* =========================================
-   ANIMACIONES Y BANNER VIBRANTE (NUEVO)
-   ========================================= */
-.gradient-banner {
-    width: 100%;
-    height: 12px;
-    position: absolute; 
-    top: 0;
-    left: 0;
-    background: linear-gradient(270deg, #ff4b4b, #f9c74f, #90be6d, #4d908e, #577590, #9b5de5);
-    background-size: 1200% 1200%;
-    animation: fluidGradient 12s ease infinite;
-}
-
-@keyframes fluidGradient {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
-}
-
-@keyframes fadeInDown {
-    from { opacity: 0; transform: translateY(-20px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes popIn {
-    from { opacity: 0; transform: scale(0.9); }
-    to { opacity: 1; transform: scale(1); }
-}
-
-/* =========================================
-      TIPOGRAFÍA Y HEADER
-   ========================================= */
-header {
-    text-align: center;
-    margin-bottom: 2rem;
-    margin-top: 2rem;
-    animation: fadeInDown 0.8s ease-out;
+    padding: 1.5rem 4%;
+    background: #fff;
+    border-bottom: 1px solid #eaeaea;
 }
 
 .brand-container {
     display: flex;
     align-items: center;
-    justify-content: center;
     gap: 12px;
-    margin-bottom: 0.5rem;
 }
 
-header h1 {
-    font-size: 2.5rem;
-    font-weight: 600; 
-    letter-spacing: -1px;
-    color: var(--text-color);
+.brand-container h2 {
+    font-size: 1.5rem;
+    font-weight: 800;
+    letter-spacing: -0.5px;
 }
 
-header p {
+.nav-links a {
+    text-decoration: none;
     color: #666;
-    font-size: 1rem;
-    max-width: 500px;
-    margin: 0 auto;
-    line-height: 1.5;
+    margin-left: 1.5rem;
+    font-weight: 500;
+    font-size: 0.95rem;
 }
 
 /* =========================================
-   SECCIÓN DE CONTROLES (GLASSMORPHISM)
+   LAYOUT DE DOS COLUMNAS (HERO)
+   ========================================= */
+.hero-section {
+    display: flex;
+    flex: 1;
+    align-items: center;
+    padding: 4% 4%;
+    gap: 4rem;
+}
+
+.hero-content {
+    flex: 1; /* Ocupa la mitad izquierda */
+    max-width: 600px;
+}
+
+.hero-visual {
+    flex: 1.2; /* Ocupa la mitad derecha, un poco más ancha */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* =========================================
+   TIPOGRAFÍA HERO (IZQUIERDA)
+   ========================================= */
+.subtitle {
+    display: inline-block;
+    color: #666;
+    font-weight: 600;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 1rem;
+}
+
+.hero-content h1 {
+    font-size: 4.5rem;
+    font-weight: 800;
+    letter-spacing: -2px;
+    line-height: 1.05;
+    margin-bottom: 1.5rem;
+}
+
+.hero-content p {
+    font-size: 1.25rem;
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 2.5rem;
+}
+
+.hint {
+    font-size: 0.9rem !important;
+    color: #999 !important;
+    margin-top: 1rem;
+}
+
+/* =========================================
+   CONTROLES (IZQUIERDA)
    ========================================= */
 .controls {
     display: flex;
     gap: 1rem;
-    align-items: center;
-    margin-bottom: 3rem;
-    padding: 1.2rem 2.5rem;
-    border-radius: 50px; 
-    
-        background: rgba(255, 255, 255, 0.6);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border: 1px solid rgba(255, 255, 255, 0.4);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
 }
 
-select, button {
+select, .primary-btn {
     font-family: inherit;
-    font-size: 1rem;
-    padding: 0.6rem 1.2rem;
-    border: 1px solid #e0e0e0;
-    border-radius: 20px;
+    font-size: 1.1rem;
+    padding: 0.8rem 1.5rem;
+    border-radius: 8px;
     outline: none;
-    background: #fff;
-    transition: all 0.2s ease;
+    font-weight: 600;
 }
 
-button {
-    background-color: var(--text-color);
+select {
+    border: 2px solid #eaeaea;
+    background: #fff;
+    cursor: pointer;
+}
+
+.primary-btn {
+    background-color: var(--accent-color);
     color: #fff;
     border: none;
     cursor: pointer;
-    font-weight: 500;
+    transition: transform 0.2s, background-color 0.2s;
+    box-shadow: 0 4px 15px rgba(59, 96, 255, 0.3);
 }
 
-button:hover {
-    background-color: var(--accent-color);
+.primary-btn:hover {
+    background-color: #2b4be0;
     transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
 }
+
 /* =========================================
-   CONTENEDOR DE LA PALETA (CSS GRID)
+   PALETA DE COLORES (DERECHA) - BARRAS VERTICALES
    ========================================= */
 #palette-container {
     width: 100%;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    gap: 1.5rem;
-    max-width: 1000px;
-    margin: 0 auto;
+    height: 500px; /* Las barras ocuparán esta altura */
+    display: flex;
+    border-radius: 20px;
+    overflow: hidden; /* Redondea los bordes externos de todas las barras juntas */
+    box-shadow: 0 20px 40px rgba(0,0,0,0.08);
 }
 
-/* =========================================
-   TARJETAS DE COLOR
-   ========================================= */
 .color-card {
+    flex: 1; /* Todas las barras se reparten el ancho por igual */
     display: flex;
     flex-direction: column;
-    border-radius: var(--border-radius);
-    overflow: hidden;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-    transition: transform 0.2s ease;
-    animation: popIn 0.4s ease-out forwards; 
+    position: relative;
+    transition: flex 0.3s ease; /* Efecto suave al pasar el mouse */
 }
 
+/* Cuando el usuario pase el mouse por una barra, se ensancha un poco */
 .color-card:hover {
-    transform: translateY(-5px);
+    flex: 1.5; 
 }
 
 .color-display {
-    height: 150px;
+    flex: 1; /* El color ocupa todo el alto disponible */
     width: 100%;
 }
 
 .color-info {
-    padding: 1rem;
     background: #fff;
+    padding: 1rem 0;
     text-align: center;
-    font-weight: bold;
-    font-size: 1.1rem;
+    font-weight: 700;
+    font-size: 0.95rem;
+    text-transform: uppercase;
     cursor: pointer;
 }
 
 /* =========================================
-   MICROFEEDBACK (TOAST)
+   BOTÓN DE BLOQUEO (ADAPTADO A LAS BARRAS)
    ========================================= */
-#toast {
-    position: fixed;
-    bottom: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    background: #333;
-    color: #fff;
-    padding: 10px 20px;
-    border-radius: 20px;
-    font-size: 0.9rem;
-    opacity: 1;
-    transition: opacity 0.3s ease;
-    z-index: 10;
-}
-
-#toast.hidden {
-    opacity: 0;
-    pointer-events: none;
-}
-
-/* =========================================
-   BOTÓN DE BLOQUEO (LOCK)
-   ========================================= */
-.color-card {
-    position: relative; 
-}
-
 .lock-btn {
     position: absolute;
-    top: 10px;
-    right: 10px;
-    background: rgba(255, 255, 255, 0.7);
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%); /* Centrado arriba */
+    background: rgba(255, 255, 255, 0.4);
     border: none;
     border-radius: 50%;
     width: 35px;
     height: 35px;
     cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.2rem;
-    opacity: 0; 
-    transition: opacity 0.2s ease, background 0.2s ease;
-    backdrop-filter: blur(4px); 
+    font-size: 1.1rem;
+    opacity: 0;
+    transition: opacity 0.2s, background 0.2s;
 }
 
 .color-card:hover .lock-btn,
@@ -233,6 +211,25 @@ button:hover {
 }
 
 .color-card.locked .lock-btn {
-    background: #ffffff;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    background: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
 }
+
+/* =========================================
+   TOAST
+   ========================================= */
+#toast {
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #222;
+    color: #fff;
+    padding: 12px 24px;
+    border-radius: 30px;
+    font-weight: 500;
+    opacity: 1;
+    transition: opacity 0.3s;
+    z-index: 100;
+}
+#toast.hidden { opacity: 0; pointer-events: none; }

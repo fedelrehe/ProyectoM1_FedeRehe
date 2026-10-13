@@ -15,19 +15,16 @@ function getRandomHexColor() {
     return hex;
 }
 
-// Función para copiar al portapapeles y mostrar el Toast
 function copyToClipboard(hexCode) {
-    // 1. Usamos la API moderna del navegador para copiar el texto
+    
     navigator.clipboard.writeText(hexCode)
         .then(() => {
-            // 2. Si se copió con éxito, configuramos el mensaje del Toast
+            
             toast.textContent = `¡Color ${hexCode} copiado!`;
             
-            // 3. Le quitamos la clase 'hidden' para que aparezca en pantalla
             toast.classList.remove('hidden');
             
-            // 4. Configuramos un temporizador para ocultarlo después de 2.5 segundos
-            setTimeout(() => {
+                       setTimeout(() => {
                 toast.classList.add('hidden');
             }, 2500);
         })
