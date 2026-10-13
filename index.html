@@ -24,7 +24,7 @@
             <h2>Colorist</h2>
         </div>
         <div class="nav-links">
-            <a href="#">Herramientas</a>
+            <a href="#" id="history-link">Historial</a>
             <a href="#">Explorar</a>
         </div>
     </nav>
@@ -59,6 +59,20 @@
 
     </main>
 
+    <!-- VENTANA MODAL DE HISTORIAL -->
+    <div id="history-modal" class="modal hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Tu Historial de Paletas</h2>
+                <button id="close-history-btn" class="close-btn">&times;</button>
+            </div>
+            <div id="history-container" class="history-grid">
+                <!-- JavaScript dibujará las paletas anteriores aquí -->
+            </div>
+            <button id="clear-history-btn" class="secondary-btn">Borrar historial</button>
+        </div>
+    </div>
+    
     <!-- CONTENEDOR DE MICROFEEDBACK -->
     <div id="toast" class="hidden" role="alert" aria-hidden="true"></div>
 
