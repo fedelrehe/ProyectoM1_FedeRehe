@@ -325,3 +325,130 @@ select {
     transition: background 0.2s;
 }
 .secondary-btn:hover { background: #e2e2e2; }
+
+/* =========================================
+   PÁGINA EXPLORAR (LAYOUT DASHBOARD)
+   ========================================= */
+.explore-page {
+    background-color: #ffffff; /* Fondo más blanco para contrastar */
+}
+
+.explore-layout {
+    display: flex;
+    flex: 1;
+    height: calc(100vh - 75px); /* Restamos el alto del navbar */
+    overflow: hidden;
+}
+
+/* Barra Lateral (Sidebar) */
+.sidebar {
+    width: 260px;
+    background: #fbfbfb;
+    border-right: 1px solid #eaeaea;
+    padding: 2rem 1.5rem;
+    overflow-y: auto;
+}
+
+.sidebar h3 {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #999;
+    margin-bottom: 1rem;
+    margin-top: 1.5rem;
+}
+
+.sidebar h3:first-child { margin-top: 0; }
+
+.category-list {
+    list-style: none;
+}
+
+.category-list li {
+    padding: 0.6rem 1rem;
+    margin-bottom: 0.2rem;
+    border-radius: 8px;
+    color: #444;
+    cursor: pointer;
+    font-weight: 500;
+    font-size: 0.95rem;
+    transition: all 0.2s;
+}
+
+.category-list li:hover { background: #f0f0f0; }
+
+.category-list li.active {
+    background: var(--accent-color);
+    color: #fff;
+}
+
+/* Área de contenido y Grilla */
+.explore-content {
+    flex: 1;
+    padding: 2rem 4rem;
+    overflow-y: auto;
+}
+
+.explore-header {
+    margin-bottom: 2rem;
+}
+
+.explore-header h1 {
+    font-size: 2.2rem;
+    font-weight: 800;
+    margin-bottom: 0.5rem;
+}
+
+.explore-header p {
+    color: #666;
+    font-size: 1.1rem;
+}
+
+.explore-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 2rem;
+    padding-bottom: 4rem;
+}
+
+/* Tarjeta de Paleta (Referencia visual de tu imagen) */
+.explore-card {
+    border: 1px solid #eaeaea;
+    border-radius: 16px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.explore-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 24px rgba(0,0,0,0.06);
+}
+
+.explore-card-colors {
+    display: flex;
+    height: 140px;
+}
+
+.explore-color-bar {
+    flex: 1;
+}
+
+.explore-card-footer {
+    padding: 1rem 1.2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #fff;
+}
+
+.explore-card-title {
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: #222;
+}
+
+.explore-card-action {
+    color: #999;
+    font-size: 1.2rem;
+}
