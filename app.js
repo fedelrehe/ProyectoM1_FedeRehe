@@ -37,33 +37,71 @@ function copyToClipboard(hexCode) {
 }
 
 generateBtn.addEventListener('click', () => {
-    // 1. Averiguamos cuántos colores quiere el usuario
     const size = parseInt(paletteSizeSelect.value);
-    
-    // 2. Limpiamos el contenedor antes de inyectar una paleta nueva
     paletteContainer.innerHTML = '';
     
-    // RETO PARA TI:
-    // Crea un bucle 'for' que se ejecute 'size' cantidad de veces.
+    // 1. Creamos un arreglo vacío para recopilar los colores de esta paleta
+    const currentPalette = [];
+    
     for (let i = 0; i < size; i++) {
-        // A. Generamos el código hexadecimal usando la función que ya creaste
         const randomColor = getRandomHexColor();
         
-        // B. Creamos un nuevo elemento <div> para la tarjeta
+        // 2. Agregamos el color generado a nuestro arreglo
+        currentPalette.push(randomColor);
+        
         const colorCard = document.createElement('div');
         colorCard.classList.add('color-card');
         
-        // C. Le inyectamos el HTML interno a la tarjeta, 
-        // aplicando el color de fondo y mostrando el texto
         colorCard.innerHTML = `
             <div class="color-display" style="background-color: ${randomColor};"></div>
             <div class="color-info">${randomColor}</div>
         `;
-        // Le agregamos un evento de clic a toda la tarjeta
+        
         colorCard.addEventListener('click', () => {
             copyToClipboard(randomColor);
         });
-        // D. Agregamos la tarjeta recién creada al contenedor principal
+        
         paletteContainer.appendChild(colorCard);
     }
+    
+    // 3. Convertimos el arreglo a texto (JSON) y lo guardamos en el navegador
+    localStorage.setItem('colorist_palette', JSON.stringify(currentPalette));
 });
+
+// Función que inicializa la app leyendo el localStorage
+function initApp() {
+    // 1. Buscamos si hay datos guardados con la llave 'colorist_palette'
+    const savedData = localStorage.getItem('colorist_palette');
+    
+    if (savedData) {
+        // 2. Si hay datos, los transformamos de texto JSON a un arreglo de JS
+        const savedPalette = JSON.parse(savedData);
+        
+        // 3. Ajustamos el <select> para que muestre la cantidad correcta (6, 8 o 9)
+        paletteSizeSelect.value = savedPalette.length;
+        
+        // 4. Dibujamos las tarjetas iterando sobre el arreglo guardado
+        paletteContainer.innerHTML = '';
+        savedPalette.forEach(color => {
+            const colorCard = document.createElement('div');
+            colorCard.classList.add('color-card');
+            
+            colorCard.innerHTML = `
+                <div class="color-display" style="background-color: ${color};"></div>
+                <div class="color-info">${color}</div>
+            `;
+            
+            colorCard.addEventListener('click', () => {
+                copyToClipboard(color);
+            });
+            
+            paletteContainer.appendChild(colorCard);
+        });
+    } else {
+        // 5. Si no hay nada guardado (es la primera visita), simulamos un clic para generar una
+        generateBtn.click();
+    }
+}
+
+// Ejecutamos la función apenas carga el script
+initApp();
