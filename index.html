@@ -5,20 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Colorist | Generador de Paletas</title>
     
-    <!-- Importamos la tipografía principal con TODOS los grosores -->
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     
-    <!-- Vinculamos la hoja de estilos -->
+    
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-    <!-- BARRA DE NAVEGACIÓN SUPERIOR -->
-    <nav class="navbar">
+       <nav class="navbar">
         <div class="brand-container">
-            <!-- Isotipo SVG Geométrico -->
+            
             <svg width="32" height="32" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <circle cx="16" cy="20" r="12" fill="#ff4b4b" style="mix-blend-mode: multiply;" opacity="0.85"/>
                 <circle cx="26" cy="14" r="12" fill="#f9c74f" style="mix-blend-mode: multiply;" opacity="0.85"/>
@@ -32,52 +31,56 @@
         </div>
     </nav>
 
-    <!-- SECCIÓN PRINCIPAL HERO (DOS COLUMNAS) -->
-    <main class="hero-section">
+        <main class="hero-section">
         
-        <!-- COLUMNA IZQUIERDA: Texto y Controles -->
-        <div class="hero-content">
+                <div class="hero-content">
             <span class="subtitle">Generador para Colorfly Studio</span>
             <h1>Crea paletas de colores en segundos</h1>
             <p>Genera la paleta perfecta para tu diseño o inspírate con cientos de combinaciones. Herramienta de uso interno, rápida y sin distracciones.</p>
             
-            <section class="controls">
+          <section class="controls">
                 <select id="palette-size" aria-label="Cantidad de colores">
                     <option value="6">6 colores</option>
                     <option value="8">8 colores</option>
                     <option value="9">9 colores</option>
                 </select>
                 <button id="generate-btn" class="primary-btn">Generar paleta</button>
+                
+                    <div class="toggle-container">
+                    <span class="format-label">HEX</span>
+                    <label class="switch">
+                    <input type="checkbox" id="format-toggle">
+                    <span class="slider round"></span>
+                    </label>
+                    <span class="format-label">HSL</span>
+            </div>
             </section>
             
             <p class="hint">Prueba haciendo clic en el candado para fijar un color.</p>
         </div>
 
-        <!-- COLUMNA DERECHA: Los Colores -->
-        <div class="hero-visual">
+                <div class="hero-visual">
             <section id="palette-container" aria-live="polite">
-                <!-- JavaScript inyectará las barras verticales de colores aquí -->
+                
             </section>
         </div>
 
     </main>
 
-    <!-- VENTANA MODAL DE HISTORIAL -->
-    <div id="history-modal" class="modal hidden">
+        <div id="history-modal" class="modal hidden">
         <div class="modal-content">
             <div class="modal-header">
                 <h2>Tu Historial de Paletas</h2>
                 <button id="close-history-btn" class="close-btn">&times;</button>
             </div>
             <div id="history-container" class="history-grid">
-                <!-- JavaScript dibujará las paletas anteriores aquí -->
+                
             </div>
             <button id="clear-history-btn" class="secondary-btn">Borrar historial</button>
         </div>
     </div>
 
-    <!-- CONTENEDOR DE MICROFEEDBACK -->
-    <div id="toast" class="hidden" role="alert" aria-hidden="true"></div>
+       <div id="toast" class="hidden" role="alert" aria-hidden="true"></div>
 
     <script src="app.js"></script>
 </body>

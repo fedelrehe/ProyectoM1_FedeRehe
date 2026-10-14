@@ -1,13 +1,13 @@
 // =========================================
 // 1. CAPTURA DE ELEMENTOS DEL DOM
 // =========================================
-// Principales
 const generateBtn = document.getElementById('generate-btn');
 const paletteSizeSelect = document.getElementById('palette-size');
 const paletteContainer = document.getElementById('palette-container');
 const toast = document.getElementById('toast');
+const formatToggle = document.getElementById('format-toggle');
 
-// Historial
+
 const historyLink = document.getElementById('history-link');
 const historyModal = document.getElementById('history-modal');
 const closeHistoryBtn = document.getElementById('close-history-btn');
@@ -18,7 +18,6 @@ const clearHistoryBtn = document.getElementById('clear-history-btn');
 // 2. FUNCIONES UTILITARIAS
 // =========================================
 
-// Generador de color HEX
 function getRandomHexColor() {
     const characters = '0123456789ABCDEF';
     let hex = '#';
@@ -29,7 +28,70 @@ function getRandomHexColor() {
     return hex;
 }
 
-// Copiar al portapapeles y mostrar Toast
+// =========================================
+// CONVERSORES DE FORMATO DE COLOR
+// =========================================
+
+function hexToHsl(hex) {
+    hex = hex.replace(/^#/, '');
+    
+    let r = parseInt(hex.substring(0, 2), 16) / 255;
+    let g = parseInt(hex.substring(2, 4), 16) / 255;
+    let b = parseInt(hex.substring(4, 6), 16) / 255;
+
+    let max = Math.max(r, g, b), min = Math.min(r, g, b);
+    let h, s, l = (max + min) / 2;
+
+    if (max === min) {
+        h = s = 0; 
+    } else {
+        let d = max - min;
+        s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
+        switch (max) {
+            case r: h = (g - b) / d + (g < b ? 6 : 0); break;
+            case g: h = (b - r) / d + 2; break;
+            case b: h = (r - g) / d + 4; break;
+        }
+        h /= 6;
+    }
+    
+    return `hsl(${Math.round(h * 360)}, ${Math.round(s * 100)}%, ${Math.round(l * 100)}%)`;
+}
+
+function hslToHex(hslString) {
+    
+    let valores = hslString.match(/\d+/g);
+    let h = parseInt(valores[0]) / 360;
+    let s = parseInt(valores[1]) / 100;
+    let l = parseInt(valores[2]) / 100;
+    let r, g, b;
+
+    if (s === 0) {
+        r = g = b = l; 
+    } else {
+        const hue2rgb = (p, q, t) => {
+            if (t < 0) t += 1;
+            if (t > 1) t -= 1;
+            if (t < 1/6) return p + (q - p) * 6 * t;
+            if (t < 1/2) return q;
+            if (t < 2/3) return p + (q - p) * (2/3 - t) * 6;
+            return p;
+        };
+        let q = l < 0.5 ? l * (1 + s) : l + s - l * s;
+        let p = 2 * l - q;
+        r = hue2rgb(p, q, h + 1/3);
+        g = hue2rgb(p, q, h);
+        b = hue2rgb(p, q, h - 1/3);
+    }
+
+    const toHex = x => {
+        const hexVal = Math.round(x * 255).toString(16);
+        return hexVal.length === 1 ? '0' + hexVal : hexVal;
+    };
+    
+    return `#${toHex(r)}${toHex(g)}${toHex(b)}`.toUpperCase();
+}
+
 function copyToClipboard(hexCode) {
     navigator.clipboard.writeText(hexCode)
         .then(() => {
@@ -50,7 +112,6 @@ function copyToClipboard(hexCode) {
 generateBtn.addEventListener('click', () => {
     const size = parseInt(paletteSizeSelect.value);
     
-    // ANTES de borrar, capturamos las tarjetas que ya están en pantalla para ver si hay candados
     const existingCards = paletteContainer.querySelectorAll('.color-card');
     
     paletteContainer.innerHTML = '';
@@ -60,7 +121,6 @@ generateBtn.addEventListener('click', () => {
         let randomColor;
         let isLocked = false;
         
-        // Revisamos si la tarjeta existe y está bloqueada
         if (existingCards[i] && existingCards[i].classList.contains('locked')) {
             randomColor = existingCards[i].querySelector('.color-info').textContent;
             isLocked = true;
@@ -83,7 +143,6 @@ generateBtn.addEventListener('click', () => {
             <div class="color-info">${randomColor}</div>
         `;
         
-        // Lógica del botón de candado
         const lockBtn = colorCard.querySelector('.lock-btn');
         lockBtn.addEventListener('click', (evento) => {
             evento.stopPropagation(); 
@@ -91,21 +150,19 @@ generateBtn.addEventListener('click', () => {
             lockBtn.textContent = colorCard.classList.contains('locked') ? '🔒' : '🔓';
         });
         
-        // Lógica de copiar al hacer clic
-        colorCard.addEventListener('click', () => {
+            colorCard.addEventListener('click', () => {
             copyToClipboard(randomColor);
         });
         
         paletteContainer.appendChild(colorCard);
     }
     
-    // Guardamos la paleta actual en pantalla
+    
     localStorage.setItem('colorist_palette', JSON.stringify(currentPalette));
     
-    // Guardamos una copia en nuestro "Cajón de Historial"
     let history = JSON.parse(localStorage.getItem('colorist_history')) || [];
-    history.unshift(currentPalette); // La coloca de primera
-    if (history.length > 20) history.pop(); // Máximo de 20 paletas en memoria
+    history.unshift(currentPalette); 
+    if (history.length > 20) history.pop(); 
     localStorage.setItem('colorist_history', JSON.stringify(history));
 });
 
@@ -138,8 +195,9 @@ function initApp() {
             });
             
             colorCard.addEventListener('click', () => {
-                copyToClipboard(color);
-            });
+            const currentDisplayedColor = colorCard.querySelector('.color-info').textContent;
+            copyToClipboard(currentDisplayedColor);
+        });
             
             paletteContainer.appendChild(colorCard);
         });
@@ -152,25 +210,21 @@ function initApp() {
 // 5. LÓGICA DE LA VENTANA MODAL DEL HISTORIAL
 // =========================================
 
-// Abrir la ventana
 historyLink.addEventListener('click', (e) => {
     e.preventDefault();
     renderHistory();
     historyModal.classList.remove('hidden');
 });
 
-// Cerrar la ventana
 closeHistoryBtn.addEventListener('click', () => {
     historyModal.classList.add('hidden');
 });
 
-// Borrar historial
 clearHistoryBtn.addEventListener('click', () => {
     localStorage.removeItem('colorist_history');
     renderHistory(); 
 });
 
-// Función para dibujar las mini-paletas
 function renderHistory() {
     historyContainer.innerHTML = '';
     let history = JSON.parse(localStorage.getItem('colorist_history')) || [];
@@ -191,8 +245,7 @@ function renderHistory() {
             item.appendChild(colorDiv);
         });
         
-        // Al hacer clic en una paleta antigua, la cargamos en la vista principal
-        item.addEventListener('click', () => {
+            item.addEventListener('click', () => {
             localStorage.setItem('colorist_palette', JSON.stringify(palette));
             historyModal.classList.add('hidden');
             initApp();
@@ -202,7 +255,23 @@ function renderHistory() {
     });
 }
 
-// =========================================
-// 6. EJECUTAR AL CARGAR LA PÁGINA
-// =========================================
+formatToggle.addEventListener('change', () => {
+    
+    const isHslFormat = formatToggle.checked; 
+    
+    const colorInfos = document.querySelectorAll('.color-info');
+    
+    colorInfos.forEach(info => {
+        const currentText = info.textContent.trim();
+        
+        if (isHslFormat && currentText.startsWith('#')) {
+           
+            info.textContent = hexToHsl(currentText);
+        } else if (!isHslFormat && currentText.startsWith('hsl')) {
+            
+            info.textContent = hslToHex(currentText);
+        }
+    });
+});
+
 initApp();

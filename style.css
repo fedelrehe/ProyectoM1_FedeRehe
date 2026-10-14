@@ -4,7 +4,7 @@
 :root {
     --bg-color: #fbfbfb;
     --text-color: #111111;
-    --accent-color: #3b60ff; /* Un azul vibrante estilo la referencia */
+    --accent-color: #3b60ff; 
     --border-radius: 12px;
     --font-main: 'Inter', sans-serif;
 }
@@ -64,12 +64,12 @@ body {
 }
 
 .hero-content {
-    flex: 1; /* Ocupa la mitad izquierda */
+    flex: 1; 
     max-width: 600px;
 }
 
 .hero-visual {
-    flex: 1.2; /* Ocupa la mitad derecha, un poco más ancha */
+    flex: 1.2; 
     display: flex;
     justify-content: center;
     align-items: center;
@@ -144,35 +144,105 @@ select {
 .primary-btn:hover {
     background-color: #2b4be0;
     transform: translateY(-2px);
+
 }
+
+/* =========================================
+   TOGGLE DE FORMATO (HEX / HSL)
+   ========================================= */
+.toggle-container {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-left: 1rem;
+    padding-left: 1rem;
+    border-left: 2px solid #eaeaea;
+}
+
+.format-label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #666;
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 46px;
+    height: 24px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-color: #ccc;
+    transition: .3s;
+}
+
+.slider.round {
+    border-radius: 24px;
+}
+
+.slider.round:before {
+    border-radius: 50%;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 18px;
+    width: 18px;
+    left: 3px;
+    bottom: 3px;
+    background-color: white;
+    transition: .3s;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+input:checked + .slider {
+    background-color: var(--accent-color);
+}
+
+input:checked + .slider:before {
+    transform: translateX(22px);
+}
+
+
 
 /* =========================================
    PALETA DE COLORES (DERECHA) - BARRAS VERTICALES
    ========================================= */
 #palette-container {
     width: 100%;
-    height: 500px; /* Las barras ocuparán esta altura */
+    height: 500px; 
     display: flex;
     border-radius: 20px;
-    overflow: hidden; /* Redondea los bordes externos de todas las barras juntas */
+    overflow: hidden; 
     box-shadow: 0 20px 40px rgba(0,0,0,0.08);
 }
 
 .color-card {
-    flex: 1; /* Todas las barras se reparten el ancho por igual */
+    flex: 1; 
     display: flex;
     flex-direction: column;
     position: relative;
-    transition: flex 0.3s ease; /* Efecto suave al pasar el mouse */
+    transition: flex 0.3s ease; 
 }
 
-/* Cuando el usuario pase el mouse por una barra, se ensancha un poco */
+
 .color-card:hover {
     flex: 1.5; 
 }
 
 .color-display {
-    flex: 1; /* El color ocupa todo el alto disponible */
+    flex: 1; 
     width: 100%;
 }
 
@@ -186,14 +256,12 @@ select {
     cursor: pointer;
 }
 
-/* =========================================
-   BOTÓN DE BLOQUEO (ADAPTADO A LAS BARRAS)
-   ========================================= */
+
 .lock-btn {
     position: absolute;
     top: 20px;
     left: 50%;
-    transform: translateX(-50%); /* Centrado arriba */
+    transform: translateX(-50%); 
     background: rgba(255, 255, 255, 0.4);
     border: none;
     border-radius: 50%;
@@ -246,7 +314,7 @@ select {
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 1000; /* Asegura que esté por encima de todo */
+    z-index: 1000; 
     opacity: 1;
     transition: opacity 0.3s ease;
 }
@@ -260,7 +328,7 @@ select {
     background: #fff;
     width: 90%;
     max-width: 600px;
-    max-height: 80vh; /* Altura máxima adaptable */
+    max-height: 80vh; 
     border-radius: 24px;
     padding: 2.5rem;
     box-shadow: 0 20px 50px rgba(0,0,0,0.15);
@@ -287,15 +355,15 @@ select {
 .close-btn:hover { color: #333; }
 
 .history-grid {
-    overflow-y: auto; /* Permite hacer scroll si hay muchas paletas */
+    overflow-y: auto; 
     display: flex;
     flex-direction: column;
     gap: 1.2rem;
     margin-bottom: 1.5rem;
-    padding-right: 10px; /* Espacio para la barra de scroll */
+    padding-right: 10px; 
 }
 
-/* Las mini-tarjetas horizontales */
+
 .history-item {
     display: flex;
     height: 70px;
@@ -330,13 +398,13 @@ select {
    PÁGINA EXPLORAR (LAYOUT DASHBOARD)
    ========================================= */
 .explore-page {
-    background-color: #ffffff; /* Fondo más blanco para contrastar */
+    background-color: #ffffff; 
 }
 
 .explore-layout {
     display: flex;
     flex: 1;
-    height: calc(100vh - 75px); /* Restamos el alto del navbar */
+    height: calc(100vh - 75px); 
     overflow: hidden;
 }
 
@@ -382,7 +450,7 @@ select {
     color: #fff;
 }
 
-/* Área de contenido y Grilla */
+
 .explore-content {
     flex: 1;
     padding: 2rem 4rem;
@@ -411,7 +479,7 @@ select {
     padding-bottom: 4rem;
 }
 
-/* Tarjeta de Paleta (Referencia visual de tu imagen) */
+
 .explore-card {
     border: 1px solid #eaeaea;
     border-radius: 16px;
