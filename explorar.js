@@ -8,7 +8,8 @@ const palettesDatabase = [
     { id: 6, name: "Atardecer", category: "otono", colors: ["#ffb703", "#fb8500", "#e63946", "#9d0208", "#370617"] },
     { id: 7, name: "Espacio", category: "espacio", colors: ["#0b090a", "#161a1d", "#660708", "#a4161a", "#e5383b"] },
     { id: 8, name: "Retro 80s", category: "retro", colors: ["#f72585", "#b5179e", "#7209b7", "#4361ee", "#4cc9f0"] },
-    { id: 9, name: "Glaciar", category: "invierno", colors: ["#f8f9fa", "#e9ecef", "#dee2e6", "#ced4da", "#adb5bd"] }
+    { id: 9, name: "Glaciar", category: "invierno", colors: ["#f8f9fa", "#e9ecef", "#dee2e6", "#ced4da", "#adb5bd"] },
+    { id: 10, name: "Brote Editorial", category: "primavera", colors: ["#F9F8F6", "#E3D5CA", "#A3B18A", "#E07A5F", "#1D3557"] }
 ];
 
 const exploreGrid = document.getElementById('explore-grid');
