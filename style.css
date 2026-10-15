@@ -520,3 +520,20 @@ input:checked + .slider:before {
     color: #999;
     font-size: 1.2rem;
 }
+
+/* =========================================
+   PIE DE PÁGINA (FOOTER)
+   ========================================= */
+.main-footer {
+    width: 100%;
+    padding: 2rem 1rem 1rem 1rem;
+    text-align: center;
+    margin-top: auto; 
+}
+
+.main-footer p {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: #a0a0a0;
+    letter-spacing: 0.5px;
+}

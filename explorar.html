@@ -5,18 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Colorist | Explorar Paletas</title>
     
-    <!-- Importamos la tipografía principal -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     
-    <!-- Vinculamos la hoja de estilos general -->
-    <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="style.css">
 </head>
 <body class="explore-page">
     
-    <!-- NAVBAR (Igual al index, pero con link para volver) -->
-    <nav class="navbar">
+        <nav class="navbar">
         <div class="brand-container">
             <svg width="32" height="32" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <circle cx="16" cy="20" r="12" fill="#ff4b4b" style="mix-blend-mode: multiply;" opacity="0.85"/>
@@ -26,17 +23,16 @@
             <h2>Colorist</h2>
         </div>
         <div class="nav-links">
-            <!-- Volvemos al generador -->
+            
             <a href="index.html">Inicio</a> 
             <a href="explorar.html" style="color: var(--accent-color); font-weight: 700;">Explorar</a>
         </div>
     </nav>
 
-    <!-- LAYOUT PRINCIPAL DE EXPLORACIÓN -->
+    
     <div class="explore-layout">
         
-        <!-- SIDEBAR: Categorías (Estilos, Estaciones, Temas) -->
-        <aside class="sidebar">
+            <aside class="sidebar">
             <h3>Estilos</h3>
             <ul class="category-list">
                 <li class="active" data-filter="pastel">Pastel</li>
@@ -59,20 +55,29 @@
             </ul>
         </aside>
 
-        <!-- CONTENIDO PRINCIPAL: Grilla de Paletas -->
+        
         <main class="explore-content">
             <div class="explore-header">
                 <h1>Paletas de colores</h1>
                 <p>Explora combinaciones de color por estilo, estación y tema. Haz clic en una paleta para guardarla o usarla.</p>
             </div>
 
-            <!-- Aquí inyectaremos las tarjetas con JS -->
+           
             <div id="explore-grid" class="explore-grid"></div>
         </main>
 
     </div>
 
-    <!-- Script exclusivo para esta página -->
-    <script src="explorar.js"></script>
+        <script src="explorar.js"></script>
+
+            <div id="explore-grid" class="explore-grid"></div>
+            
+            <footer class="main-footer">
+                <p>&copy; 2026 Colorfly Studio. Todos los derechos reservados.</p>
+            </footer>
+        </main> 
+
+    </div> 
+
 </body>
 </html>
