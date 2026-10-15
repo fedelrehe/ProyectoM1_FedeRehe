@@ -7,7 +7,7 @@ Colorist es una aplicación web interactiva diseñada para crear, explorar y ges
 
 * **Repositorio:** https://github.com/fedelrehe/ProyectoM1_FedeRehe.git
 * **Sitio web:** https://fedelrehe.github.io/ProyectoM1_FedeRehe/
-* **Demostración y Capturas (Google Drive):** [Carpeta de Demostración - Colorist](https://drive.google.com/drive/folders/1BHx0xbfF162iV8fDA4LL9wIrPkeiITlx) / [Carpeta de Capturas de IA - Colorist] (https://drive.google.com/drive/folders/1wsqFrdqLFXrXFlJ0QAGyfCPT6iOPAX1D?usp=drive_link)
+* **Demostración y Capturas (Google Drive):** [Carpeta de Demostración - Colorist](https://drive.google.com/drive/folders/1BHx0xbfF162iV8fDA4LL9wIrPkeiITlx) / [Carpeta de Capturas de IA - Colorist](https://drive.google.com/drive/folders/1wsqFrdqLFXrXFlJ0QAGyfCPT6iOPAX1D?usp=drive_link)
 
 ## 1. Estructura del Repositorio
 ---
@@ -21,21 +21,18 @@ El proyecto está modularizado para separar responsabilidades (interfaz, estilos
 ├── app.js           # Lógica core: algoritmos de color, eventos, conversiones y localStorage.
 ├── explorar.js      # Lógica de renderizado dinámico y filtrado de categorías.
 └── README.md        # Documentación técnica y guía del proyecto.
+```
 
 ## 2. Funcionalidades
 ---
 
-* **Generador dinámico:** permite la creación aleatoria de paletas adaptables a 6, 8 o 9 bloques de color.
-
+* **Generador dinámico:** permite la creación aleatoria de paletas adaptables a `6`, `8` o `9` bloques de color.
 * **Bloqueo inteligente (Lock):** consiste en un sistema individual de candados que permite fijar colores específicos mientras se re-generan los demás para refinar la paleta perfecta.
-
-* **Conversión en tiempo real:** un interruptor interactivo transforma instantáneamente todos los valores en pantalla entre formatos HEX y HSL mediante algoritmos matemáticos en JS.
-
+* **Conversión en tiempo real:** un interruptor interactivo transforma instantáneamente todos los valores en pantalla entre formatos `HEX` y `HSL` mediante algoritmos matemáticos en JS.
 * **Dashboard de exploración:** dispone de una sección dedicada con una base de datos local de paletas predefinidas (ej. Primavera, Editorial, Retro), categorizadas y renderizadas dinámicamente. Al seleccionar una, se transfiere automáticamente al generador principal.
-
-* **Historial persistente:** utiliza una ventana modal tipo Glassmorphism que almacena las últimas combinaciones generadas. Permite "viajar en el tiempo" para recuperar iteraciones anteriores.
-
-* **Copiado rápido:** al hacer clic directamente sobre la tarjeta del color deseado, se integra de forma nativa la copia de códigos de color al portapapeles, acompañado del mensaje ¡Copiado! como confirmación.
+* **Historial persistente:** utiliza una ventana modal tipo *Glassmorphism* que almacena las últimas combinaciones generadas.
+  * Permite "viajar en el tiempo" para recuperar iteraciones anteriores.
+* **Copiado rápido:** al hacer clic directamente sobre la tarjeta del color deseado, se integra de forma nativa la copia de códigos de color al portapapeles, acompañado del mensaje `¡Copiado!` como confirmación.
 
 ## 3. Cómo usar la aplicación
 ---
@@ -69,3 +66,4 @@ El proyecto está modularizado para separar responsabilidades (interfaz, estilos
 * **Pair programming y refactorización:** se realizó la auditoría y optimización de fragmentos de código, sustituyendo concatenaciones por Template Literals y estructuración modular de funciones.
 * **Troubleshooting y diagnóstico de bugs:** actuó como diagnóstico en tiempo real ante comportamientos inesperados, como la resolución de conflictos de especificidad CSS al ocultar el `input type="checkbox"`.
 * **Consultoría de UI/UX y estética editorial:** brindó asistencia teórica para implementar un layout asimétrico de pantalla dividida (Split Screen) y generación conjunta de paletas temáticas con criterio comercial (ej. paleta "Brote Editorial").
+
